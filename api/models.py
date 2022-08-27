@@ -47,7 +47,7 @@ class Product(BaseModel):
         }
 
 
-class Bill(BaseModel):
+class Bill(Model):
     id: int = fields.IntField(pk=True, generated=False)
     balance: int = fields.IntField(default=0)
     user: fields.ForeignKeyRelation['User'] = fields.ForeignKeyField('models.User', related_name='bills')
@@ -59,7 +59,7 @@ class Bill(BaseModel):
         }
 
 
-class Transaction(BaseModel):
+class Transaction(Model):
     id: int = fields.IntField(pk=True, generated=False)
     amount: int = fields.IntField()
     bill: fields.ForeignKeyRelation['Bill'] = fields.ForeignKeyField('models.Bill', related_name='transactions')
